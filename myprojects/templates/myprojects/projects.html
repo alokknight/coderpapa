@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% block title %}PROJECTS{% endblock %}
+
+{% block body %}
+
+<style>
+strong{
+    color:Black;
+}
+ul{
+    color:blue;
+}
+
+
+* {
+    margin: 0;
+    padding: 2;
+    box-sizing: border-box
+}
+
+.container{
+
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+    color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 700px
+
+}
+
+</style>
+
+
+
+
+<div class="container">
+<h2>Projects</h2>
+{% for project in projects %}
+          <h3>{{ project.title }}</h3>
+            <div class="card-body">
+              <p class="card-text" >{{project.desc|safe}}</p>
+            </div>
+{% endfor %} 
+</div>
+
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {% for project in projects %}
+                    <div class="col">
+                            <div class="card shadow-sm">
+            <!--              <img src="{{request.scheme}}://{{request.META.HTTP_HOST}}/static/img/{{ tut.img }}" class="d-block w-100" alt="">-->
+                            <img src="{{ project.img.url }}" class="d-block w-100" alt="" width="200" height="300">
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>{{project.title}}</strong>
+                                        <button type="button" onclick="window.location.href='/projects/update_projects/{{project.slug}}'" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </p>
+                                        {% comment %} <p class="card-text">{{project.desc|safe}}</p> {% endcomment %}
+                                        <p class="card-text"><b>Tech Used:</b> {{project.techused}}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button type="button" onclick="window.location.href='/projects/{{project.slug}}'"class="btn btn-sm btn-outline-secondary">View</button>
+                                                    <button type="button" onclick="window.location.href='/projects/update_projects/{{project.slug}}'" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                                </div>
+                                            <small class="text-muted">{{project.startingdate}}&nbsp;&nbsp; to &nbsp;</small>
+                                            <small class="text-muted">{{project.endingdate}}</small>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+        {% endfor %}   
+    </div>
+</div>
+{% endblock body %}
+

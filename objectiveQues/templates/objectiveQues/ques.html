@@ -1,0 +1,216 @@
+{% extends 'base.html'%}
+{% block title %}Objective{% endblock %}
+
+{% block body %}
+
+{% for s in subjects%}
+{{s.subject}}
+{% endfor%}
+
+
+{% for q in quess %}
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+            <div class="py-2 h5"><b>Q.{{q.quesno}}{{ q.ques|safe }}</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                    <label class="options">{{ q.option1 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
+                    <label class="options">{{ q.option2 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
+                    <label class="options">{{ q.option3 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
+                    <label class="options">{{ q.option4 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
+
+                        <div onclick="myFunction()">
+
+                                <div class="mcq-answer-view-con">
+                                    <a  class="mcq-answer-view" ><i class="fa fa-unlock"  ></i> View Answer</a>
+                                </div>
+
+                                <div id ='myDIV' class="mcq-answer-con" style="display: none;">
+                                    <label>Correct Answer: <i class="fa fa-times mcq-ans-close"></i></label>
+                                    <div>
+                                            <label><i class="fa fa-check mcq-ans-tick"></i>{{ q.ans }}</label>
+                                            <div ><label class="options"><strong>Ans.</strong> {{ q.exp }}<span class=""></span> </label></div>
+                                    </div>
+                                </div>
+                        </div>
+
+{% comment %}
+<!--
+                        <div >
+                                <div class="mcq-answer-view-con">
+                                    <a class="mcq-answer-view" ><i class="fa fa-unlock" aria-hidden="true"></i> View Answer</a>
+                                </div>
+
+                                <div class="mcq-answer-con" hidden="" style="display: block;">
+                                    <label>Correct Answer: <i class="fa fa-times mcq-ans-close"></i></label>
+                                    <div>
+                                            <label><i class="fa fa-check mcq-ans-tick"></i>{{ q.ans }}</label>
+                                            <br>
+                                    </div>
+                                </div>
+                        </div>
+-->
+ {% endcomment %}
+
+
+
+
+                </div>
+            </div>
+
+    </div>
+{% endfor %}
+<div class="d-flex align-items-center pt-3">
+            <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+            <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+        </div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background-color: #333
+
+}
+
+.container {
+    background-color: #555;
+    background-image: linear-gradient(
+83deg, #8b55f5, #f16fa1);
+    color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 700px
+}
+
+.container>p {
+    font-size: 32px
+}
+
+.question {
+    width: 75%
+}
+
+.options {
+    position: relative;
+    padding-left: 40px
+}
+
+#options label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.options input {
+    opacity: 0
+}
+
+.checkmark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #555;
+    border: 1px solid #ddd;
+    border-radius: 50%
+}
+
+.options input:checked~.checkmark:after {
+    display: block
+}
+
+.options .checkmark:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark {
+    background: #21bf73;
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark:after {
+    transform: translate(-50%, -50%) scale(1)
+}
+
+.btn-primary {
+    background-color: #555;
+    color: #ddd;
+    border: 1px solid #ddd
+}
+
+.btn-primary:hover {
+    background-color: #21bf73;
+    border: 1px solid #21bf73
+}
+
+.btn-success {
+    padding: 5px 25px;
+    background-color: #21bf73
+}
+
+
+.mcq-answer-con {
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333333;
+}
+    .mcq-answer-con > label {
+        font-size: 17px;
+        display: block;
+        padding: 10px 20px;
+        background: orange;
+        color: white;
+    }
+    .mcq-answer-con div {
+        padding: 20px;
+    }
+
+.mcq-answer-view {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 20px 20px 20px;
+    color: orange;
+    font-size: large;
+    font-weight: 600;
+}
+
+
+
+@media(max-width:576px) {
+    .question {
+        width: 100%;
+        word-spacing: 2px
+    }
+}
+</style>
+
+<script>
+
+var x = document.getElementById("myDIV");
+function myFunction() {
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  }else {
+    x.style.display = "block";
+  }
+}
+</script>
+{% endblock body %}

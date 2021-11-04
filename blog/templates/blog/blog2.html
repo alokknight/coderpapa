@@ -1,0 +1,308 @@
+
+
+
+{% extends 'base.html'%}
+{% block title %}Objective{% endblock %}
+
+<style>
+ul{
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    color:yellow;
+
+}
+strong{
+    color:white;
+}
+
+img{
+display: inline-block;
+}
+body p{
+    margin: 0 0 1.3rem 0 !important;
+    color:yellow;
+}
+
+</style>
+
+{% block body %}
+
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+            <div class="py-2 h5"><b><h2>Following are frequently asked questions in job interviews for freshers as well as experienced Data Scientist.</h2></b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                <p><strong>1. What is Data Science?</strong></p>
+                <p>Data Science is a combination of algorithms, tools, and machine learning technique which helps you to find common hidden patterns from the given raw data.</p>
+                <p><strong>2. What is logistic regression in Data Science?</strong></p>
+                <p>Logistic Regression is also called as the logit model. It is a method to forecast the binary outcome from a linear combination of predictor variables.</p>
+                <p><strong>3. Name three types of biases that can occur during sampling</strong></p>
+                <p>In the sampling process, there are three types of biases, which are:</p><div class='code-block code-block-2' style='margin: 8px 0; clear: both;'>
+                <ul>
+                <li>Selection bias</li>
+                <li>Under coverage bias</li>
+                <li>Survivorship bias</li>
+                </ul>
+                <p><strong>4. Discuss Decision Tree algorithm </strong></p>
+                <p>A decision tree is a popular supervised machine learning algorithm. It is mainly used for Regression and Classification. It allows breaks down a dataset into smaller subsets. The decision tree can able to handle both categorical and numerical data.</p>
+                <p><strong>5. What is Prior probability and likelihood?</strong></p>
+                <p>Prior probability is the proportion of the dependent variable in the data set while the likelihood is the probability of classifying a given observant in the presence of some other variable.  </p>
+                <p><strong>6. Explain Recommender Systems?</strong></p>
+                <p>It is a subclass of information filtering techniques. It helps you to predict the preferences or ratings which users likely to give to a product.</p>
+                <p><strong>7. Name three disadvantages of using a linear model </strong></p>
+                <p>Three disadvantages of the linear model are:</p>
+                <ul>
+                <li>The assumption of linearity of the errors.</li>
+                <li>You can&#8217;t use this model for binary or count outcomes</li>
+                <li>There are plenty of overfitting problems that it can&#8217;t solve</li>
+                </ul>
+                <p><strong>8. Why do you need to perform resampling?</strong></p>
+                <p>Resampling is done in below-given cases:</p>
+                <ul>
+                <li>Estimating the accuracy of sample statistics by drawing randomly with replacement from a set of the data point or using as subsets of accessible data </li>
+                <li>Substituting labels on data points when performing necessary tests</li>
+                <li>Validating models by using random subsets </li>
+                </ul>
+                <p><strong>9. List out the libraries in Python used for Data Analysis and Scientific Computations.</strong></p>
+                <ul>
+                <li>SciPy </li>
+                <li>Pandas </li>
+                <li>Matplotlib </li>
+                <li>NumPy </li>
+                <li>SciKit </li>
+                <li>Seaborn</li>
+                </ul>
+                <p><strong>10. What is Power Analysis?</strong></p>
+                <p>The power analysis is an integral part of the experimental design. It helps you to determine the sample size requires to find out the effect of a given size from a cause with a specific level of assurance. It also allows you to deploy a particular probability in a sample size constraint.</p>
+                <p><strong>11. Explain Collaborative filtering</strong></p>
+                <p>Collaborative filtering used to search for correct patterns by collaborating viewpoints, multiple data sources, and various agents.</p>
+                <p><strong>12. What is bias? </strong></p>
+                <p>Bias is an error introduced in your model because of the oversimplification of a machine learning algorithm.&#8221; It can lead to underfitting.</p>
+                <p><strong>13. Discuss &#8216;Naive&#8217; in a Naive Bayes algorithm?</strong></p>
+                <p>The Naive Bayes Algorithm model is based on the Bayes Theorem. It describes the probability of an event. It is based on prior knowledge of conditions which might be related to that specific event.</p>
+                <p><strong>14. What is a Linear Regression?</strong></p>
+                <p>Linear regression is a statistical programming method where the score of a variable &#8216;A&#8217; is predicted from the score of a second variable &#8216;B&#8217;. B is referred to as the predictor variable and A as the criterion variable.</p>
+                <p><strong>15. State the difference between the expected value and mean value </strong></p>
+                <p>They are not many differences, but both of these terms are used in different contexts. Mean value is generally referred to when you are discussing a probability distribution whereas expected value is referred to in the context of a random variable.</p>
+                <p><strong>16. What the aim of conducting A/B Testing?</strong></p>
+                <p>AB testing used to conduct random experiments with two variables, A and B. The goal of this testing method is to find out changes to a web page to maximize or increase the outcome of a strategy.</p>
+                <p><strong>17. What is Ensemble Learning?</strong></p>
+                <p>The ensemble is a method of combining a diverse set of learners together to improvise on the stability and predictive power of the model. Two types of Ensemble learning methods are: </p><div class='code-block code-block-3' style='margin: 8px 0; clear: both;'>
+                <p>Bagging</p>
+                <p>Bagging method helps you to implement similar learners on small sample populations. It helps you to make nearer predictions.</p>
+                <p>Boosting</p>
+                <p>Boosting is an iterative method which allows you to adjust the weight of an observation depends upon the last classification. Boosting decreases the bias error and helps you to build strong predictive models.</p>
+                <p><strong>18. Explain Eigenvalue and Eigenvector</strong></p>
+                <p>Eigenvectors are for understanding linear transformations. Data scientist need to calculate the eigenvectors for a covariance matrix or correlation. Eigenvalues are the directions along using specific linear transformation acts by compressing, flipping, or stretching.</p>
+                <p><strong>19. Define the term cross-validation</strong></p>
+                <p>Cross-validation is a validation technique for evaluating how the outcomes of statistical analysis will generalize for an Independent dataset. This method is used in backgrounds where the objective is forecast, and one needs to estimate how accurately a model will accomplish.</p>
+                <p><strong>20. Explain the steps for a Data analytics project</strong></p>
+                <p>The following are important steps involved in an analytics project:</p>
+                <ul>
+                <li>Understand the Business problem</li>
+                <li>Explore the data and study it carefully.</li>
+                <li>Prepare the data for modeling by finding missing values and transforming variables.</li>
+                <li>Start running the model and analyze the Big data result. </li>
+                <li>Validate the model with new data set.</li>
+                <li>Implement the model and track the result to analyze the performance of the model for a specific period.</li>
+                </ul>
+                <p><strong>21. Discuss Artificial Neural Networks</strong></p>
+                <p>Artificial Neural networks (ANN) are a special set of algorithms that have revolutionized machine learning. It helps you to adapt according to changing input. So the network generates the best possible result without redesigning the output criteria.</p>
+                <p><strong>22. What is Back Propagation?</strong></p>
+                <p>Back-propagation is the essence of neural net training. It is the method of tuning the weights of a neural net depend upon the error rate obtained in the previous epoch. Proper tuning of the helps you to reduce error rates and to make the model reliable by increasing its generalization.</p>
+                <p><strong>23. What is a Random Forest?  </strong></p>
+                <p>Random forest is a machine learning method which helps you to perform all types of regression and classification tasks. It is also used for treating missing values and outlier values. </p>
+                <p><strong>24. What is the importance of having a selection bias?</strong></p>
+                <p>Selection Bias occurs when there is no specific randomization achieved while picking individuals or groups or data to be analyzed. It suggests that the given sample does not exactly represent the population which was intended to be analyzed. </p>
+                <p><strong>25. What is the K-means clustering method?</strong></p>
+                <p>K-means clustering is an important unsupervised learning method. It is the technique of classifying data using a certain set of clusters which is called K clusters. It is deployed for grouping to find out the similarity in the data.</p><div class='code-block code-block-4' style='margin: 8px 0; clear: both;'>
+                <p><strong>26. Explain the difference between Data Science and Data Analytics</strong></p>
+                <p>Data Scientists need to slice data to extract valuable insights that a data analyst can apply to real-world business scenarios. The main difference between the two is that the data scientists have more technical knowledge then business analyst. Moreover, they don&#8217;t need an understanding of the business required for data visualization.</p>
+                <p><strong>27. Explain p-value?</strong></p>
+                <p>When you conduct a hypothesis test in statistics, a p-value allows you to determine the strength of your results. It is a numerical number between 0 and 1. Based on the value it will help you to denote the strength of the specific result.</p>
+                <p><strong>28. Define the term deep learning</strong></p>
+                <p>Deep Learning is a subtype of machine learning. It is concerned with algorithms inspired by the structure called artificial neural networks (ANN).</p>
+                <p><strong>29. Explain the method to collect and analyze data to use social media to predict the weather condition.</strong></p>
+                <p>You can collect social media data using Facebook, twitter, Instagram&#8217;s API&#8217;s. For example, for the tweeter, we can construct a feature from each tweet like tweeted date, retweets,  list of follower, etc. Then you can use a multivariate time series model to predict the weather condition. </p>
+                <p><strong>30. When do you need to update the algorithm in Data science?</strong></p>
+                <p>You need to update an algorithm in the following situation:</p>
+                <ul>
+                <li>You want your data model to evolve as data streams using infrastructure</li>
+                <li>The underlying data source is changing
+                <p>If it is non-stationarity</p>
+                </li>
+                </ul>
+                <p><strong>31. What is Normal Distribution </strong></p>
+                <p>A normal distribution is a set of a continuous variable spread across a normal curve or in the shape of a bell curve. You can consider it as a continuous probability distribution which is useful in statistics. It is useful to analyze the variables and their relationships when we are using the normal distribution curve.</p>
+                <p><strong>32. Which language is best for text analytics? R or Python?</strong></p>
+                <p>Python will more suitable for text analytics as it consists of a rich library known as pandas.  It allows you to use high-level data analysis tools and data structures, while R doesn&#8217;t offer this feature.</p>
+                <p><strong>33. Explain the benefits of using statistics by Data Scientists </strong></p>
+                <p>Statistics help Data scientist to get a better idea of customer&#8217;s expectation. Using the statistic method Data Scientists can get knowledge regarding consumer interest, behavior, engagement, retention, etc. It also helps you to build powerful data models to validate certain inferences and predictions.</p>
+                <p><strong>34. Name various types of Deep Learning Frameworks</strong></p>
+                <ul>
+                <li>Pytorch</li>
+                <li>Microsoft Cognitive Toolkit</li>
+                <li>TensorFlow</li>
+                <li>Caffe</li>
+                <li>Chainer</li>
+                <li>Keras
+                </li>
+                </ul>
+                <p><strong>35.Explain Auto-Encoder</strong></p>
+                <p>Autoencoders are learning networks. It helps you to transform inputs into outputs with fewer numbers of errors. This means that you will get output to be as close to input as possible.</p>
+                <p><strong>36. Define Boltzmann Machine</strong></p>
+                <p>Boltzmann machines is a simple learning algorithm. It helps you to discover those features that represent complex regularities in the training data. This algorithm allows you to optimize the weights and the quantity for the given problem.</p>
+                <p><strong>37. Explain why Data Cleansing  is essential and which method you use to maintain clean data</strong></p>
+                <p>Dirty data often leads to the incorrect inside, which can damage the prospect of any organization. For example, if you want to run a targeted marketing campaign. However, our data incorrectly tell you that a specific product will be in-demand with your target audience; the campaign will fail. </p>
+                <p><strong>38. What is skewed Distribution &amp; uniform distribution?</strong></p>
+                <p>Skewed distribution occurs when if data is distributed on any one side of the plot whereas uniform distribution is identified when the data is spread is equal in the range.</p>
+                <p><strong>39. When underfitting occurs in a static model?</strong></p>
+                <p>Underfitting occurs when a statistical model or machine learning algorithm not able to capture the underlying trend of the data. </p>
+                <p><strong>40. What is reinforcement learning?</strong></p>
+                <p>Reinforcement Learning is a learning mechanism about how to map situations to actions. The end result should help you to increase the binary reward signal. In this method, a learner is not told which action to take but instead must discover which action offers a maximum reward. As this method based on the reward/penalty mechanism.</p>
+                <p><strong>41. Name commonly used algorithms.</strong></p>
+                <p>Four most commonly used algorithm by Data scientist are:</p>
+                <ul>
+                <li>Linear regression</li>
+                <li>Logistic regression</li>
+                <li>Random Forest</li>
+                <li>KNN</li>
+                </ul>
+                <p><strong>42. What is precision?</strong></p>
+                <p>Precision is the most commonly used error metric is n classification mechanism. Its range is from 0 to 1, where 1 represents 100%</p>
+                <p><strong>43. What is a univariate analysis?</strong></p>
+                <p>An analysis which is applied to none attribute at a time is known as univariate analysis. Boxplot is widely used, univariate model.  </p>
+                <p><strong>44. How do you overcome challenges to your findings?</strong></p>
+                <p>In order, to overcome challenges of my finding one need to encourage discussion, Demonstrate leadership and respecting different options.</p>
+                <p><strong>45. Explain cluster sampling technique in Data science  </strong></p>
+                <p>A cluster sampling method is used when it is challenging to study the target population spread across, and simple random sampling can&#8217;t be applied.  </p>
+                <p><strong>46. State the difference between a Validation Set and a Test Set</strong></p>
+                <p>A Validation set mostly considered as a part of the training set as it is used for parameter selection which helps you to avoid overfitting of the model being built.</p>
+                <p>While a Test Set is used for testing or evaluating the performance of a trained machine learning model.</p>
+                <p><strong>47. Explain the term Binomial Probability Formula?</strong></p>
+                <p>&#8220;The binomial distribution contains the probabilities of every possible success on N trials for independent events that have a probability of π  of occurring.&#8221;</p>
+                <p><strong>48. What is a recall? </strong></p>
+                <p>A recall is a ratio of the true positive rate against the actual positive rate. It ranges from 0 to 1.</p>
+                <p><strong>49. Discuss normal distribution</strong></p>
+                <p>Normal distribution equally distributed as such the mean, median and mode are equal.</p>
+                <p><strong>50. While working on a data set, how can you select important variables? Explain </strong></p>
+                <p>Following  methods of variable selection you can use:</p>
+                <ul>
+                <li>Remove the correlated variables before selecting important variables</li>
+                <li>Use linear regression and select variables which depend on that p values.</li>
+                <li>Use Backward, Forward Selection, and Stepwise Selection</li>
+                <li>Use Xgboost, Random Forest, and plot variable importance chart.</li>
+                <li>Measure information gain for the given set of features and select top n features accordingly.</li>
+                </ul>
+                <p><strong>51. Is it possible to capture the correlation between continuous and categorical variable?</strong></p>
+                <p>Yes, we can use analysis of covariance technique to capture the association between continuous and categorical variables.</p>
+                <p><strong>52. Treating a categorical variable as a continuous variable would result in a better predictive model?</strong></p>
+                <p>Yes, the categorical value should be considered as a continuous variable only when the variable is ordinal in nature. So it is a better predictive model.</p>
+                <div class='yarpp yarpp-related yarpp-related-website yarpp-template-list'>
+                </div>
+            </div>
+
+    </div>
+
+<div class="d-flex align-items-center pt-3"></div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background-color: #333
+}
+
+.container {
+    background-color: #555;
+    color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 700px
+}
+
+.container>p {
+    font-size: 32px
+}
+
+.question {
+    width: 75%
+}
+
+.options {
+    position: relative;
+    padding-left: 40px
+}
+
+#options label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.options input {
+    opacity: 0
+}
+
+.options input:checked~.checkmark:after {
+    display: block
+}
+
+.options .checkmark:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark {
+    background: #21bf73;
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark:after {
+    transform: translate(-50%, -50%) scale(1)
+}
+
+.btn-primary {
+    background-color: #555;
+    color: #ddd;
+    border: 1px solid #ddd
+}
+
+.btn-primary:hover {
+    background-color: #21bf73;
+    border: 1px solid #21bf73
+}
+
+.btn-success {
+    padding: 5px 25px;
+    background-color: #21bf73
+}
+
+
+
+
+
+
+
+</style>
+<script>
+
+
+
+</script>
+{% endblock body %}

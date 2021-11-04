@@ -1,0 +1,208 @@
+{% extends 'base.html'%}
+{% block title %}Objective{% endblock %}
+
+{% block body %}
+
+
+<div class="vertical-menu" >
+  <a href="#" class="active">BLOGS</a>
+    {% for blog in blogs%}
+        <a  href="/blogs/{{ blog.slug }}">{{ blog.slug }}</a>
+
+    {% endfor %}
+</div>
+
+
+{% for blog in blogs %}
+    <div class="container mt-sm-5 my-1">
+    {% comment %} <img href="{{ blog.image.url }}" alt="BlogPic" class="center"> {% endcomment %}
+    <img src="https://source.unsplash.com/600x500/?{{ blog.img2 }}" class="center" alt="BlogPic">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+            <div class="py-2 h5"><b>Q. {{ blog.title }}</b></div>
+                <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                <p style="text-align:justify">
+                    <label class="options" >{{ blog.desc|safe }}</label>
+                    <div id="Next"> <button class="btn btn-primary" onclick="window.location.href='/blogs/update_blog/{{ blog.slug }}'">update</button> </div>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+<div class="d-flex align-items-center pt-3">
+            <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+            <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+ </div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background-color: #333
+}
+
+.container {
+    background-color: #555;
+    color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 700px
+}
+
+.container>p {
+    font-size: 32px
+}
+
+.question {
+    width: 75%
+}
+
+.options {
+
+    padding-left: 00px
+}
+
+#options label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.options input {
+    opacity: 0
+}
+
+.checkmark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #555;
+    border: 1px solid #ddd;
+    border-radius: 50%
+}
+
+.options input:checked~.checkmark:after {
+    display: block
+}
+
+.options .checkmark:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark {
+    background: #21bf73;
+    transition: 300ms ease-in-out 0s
+}
+
+.options input[type="radio"]:checked~.checkmark:after {
+    transform: translate(-50%, -50%) scale(1)
+}
+
+.btn-primary {
+    background-color: #555;
+    color: #ddd;
+    border: 1px solid #ddd
+}
+
+.btn-primary:hover {
+    background-color: #21bf73;
+    border: 1px solid #21bf73
+}
+
+.btn-success {
+    padding: 5px 25px;
+    background-color: #21bf73
+}
+
+
+.mcq-answer-con {
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333333;
+}
+    .mcq-answer-con > label {
+        font-size: 17px;
+        display: block;
+        padding: 10px 20px;
+        background: orange;
+        color: white;
+    }
+    .mcq-answer-con div {
+        padding: 20px;
+    }
+
+.mcq-answer-view {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 20px 20px 20px;
+    color: orange;
+    font-size: large;
+    font-weight: 600;
+}
+
+
+
+
+@media(max-width:576px) {
+    .question {
+        width: 100%;
+        word-spacing: 2px
+    }
+}
+
+
+.vertical-menu {
+  padding:20px;
+  width: 200px; /* Set a width if you like */
+  position: absolute;
+}
+
+.vertical-menu a {
+  background-color: #eee; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+  background-color: #04AA6D; /* Add a green color to the "active/current" link */
+  color: white;
+}
+
+
+
+
+
+</style>
+<script>
+
+
+
+</script>
+{% endblock body %}

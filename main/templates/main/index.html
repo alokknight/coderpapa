@@ -13,25 +13,33 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
+
+
+
+
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://source.unsplash.com/1800x600/?{{carousel.img2}}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>{{ carousel.title  }}</h5>
-        <p>{{ carousel.ctext }}</p>
-      </div>
-      
-    </div>
-      {% for  carousel in carousels %}
+          <div class="carousel-item active">
+            <img src="https://source.unsplash.com/1800x600/?coder,hacker" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>coderpapa</h1>
+              <h3>We are developers.</h3>
+            </div>
+          </div>
+
+{% for  carousel in carousels %}
           <div class="carousel-item">
             <img src="https://source.unsplash.com/1800x600/?{{carousel.img2}}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>{{ carousel.title  }}</h5>
-              <p>{{ carousel.ctext }}</p>
+              <h1>{{ carousel.title  }}</h1>
+              <h3>{{ carousel.ctext }}</h3>
             </div>
           </div>
-      {% endfor %}
+{% endfor %}
   </div>
+
+
+
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -40,7 +48,8 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div></div>
+</div>
+</div>
 
 
 {% if user.is_authenticated %}
@@ -50,7 +59,6 @@
 
 
 <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 {% for i in front %}
         <div class="col">
@@ -70,40 +78,6 @@
           </div>
         </div>
 {% endfor %}
-
-        <div class="col">
-          <div class="card shadow-sm">
-             <img src="https://source.unsplash.com/600x500/?girl" class="d-block w-100" alt="...">
-            <div class="card-body">
-              <p class="card-text">We developers create futures, We are hands of GOD!</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">2 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col">
-          <div class="card shadow-sm">
-             <img src="https://source.unsplash.com/600x500/?lamp" class="d-block w-100" alt="...">
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 {% endblock body %}

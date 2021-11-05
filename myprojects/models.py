@@ -13,6 +13,8 @@ class Project(models.Model):
     startingdate=models.DateField()
     endingdate=models.DateField()
     techused=models.CharField( max_length=50)
+    githublink=models.CharField(max_length=200,default='#')
+    deploylink=models.CharField(max_length=300,default='#')
     # desc=models.TextField()
     desc=RichTextUploadingField()
 

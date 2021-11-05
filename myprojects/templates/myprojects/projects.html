@@ -56,7 +56,8 @@ ul{
                             <img src="{{ project.img.url }}" class="d-block w-100" alt="" width="200" height="300">
                                     <div class="card-body">
                                         <p class="card-text"><strong>{{project.title}}</strong>
-                                        <button type="button" onclick="window.location.href='/projects/update_projects/{{project.slug}}'" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        <button type="button" onclick="window.location.href='{{project.githublink}}'" class="btn btn-sm btn-outline-secondary">github</button>
+                                        <button type="button" onclick="window.location.href='{{project.deploylink}}'" class="btn btn-sm btn-outline-secondary">deploy</button>
                                         </p>
                                         {% comment %} <p class="card-text">{{project.desc|safe}}</p> {% endcomment %}
                                         <p class="card-text"><b>Tech Used:</b> {{project.techused}}</p>

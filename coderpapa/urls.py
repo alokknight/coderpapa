@@ -27,6 +27,7 @@ urlpatterns = [
     path('projects/', include('myprojects.urls')),
     path('blogs/',include('blog.urls')),
     path('wineshop/',include('wineshop.urls')),
+    path('carprice/',include('carprice.urls')),
     path('ques/',include('objectiveQues.urls')),
     path('', include('main.urls')),
     path('profile/', include('portfolio.urls')),

@@ -20,7 +20,7 @@ class Tutorial(models.Model):
     id=models.IntegerField(primary_key=True,default="")
     subject=models.CharField( default="xyz",max_length=100)
     img=models.ImageField( upload_to="images",height_field=None, width_field=None, max_length=None)
-    # desc=models.TextField()
+    sampleLink = models.URLField(blank=True, null=True )
     desc=RichTextUploadingField()
     price=models.IntegerField()
     offer=models.BooleanField()

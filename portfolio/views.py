@@ -10,22 +10,55 @@ from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .decorators import *
-
-from .forms import PostForm, CustomUserCreationForm, ProfileForm, UserForm
+from account.forms import ProfileForm
+from .forms import PostForm, CustomUserCreationForm, UserForm
 from .filters import PostFilter
 from . import filters##
 from .models import *
 from myprojects.models import Project
 from myprojects.models import*#
+from account.models import Profile
 # Create your views here.
+
+# def home(request):
+# 	posts = Post.objects.filter(active=True, featured=True)[0:3]
+# 	posts = Project.objects.all()[0:3]
+# 	# Access the current user
+# 	current_user = request.user
+# 	# Access the user's profile data
+# 	try:
+# 		user_profile = Profile.objects.get(user=current_user)
+#     except Profile.DoesNotExist:
+# 		user_profile = None
+
+# 	context = {'posts':posts,'user_profile':user_profile}
+
+# 	return render(request, 'portfolio/index.html',context)
+# 	# return HttpResponse('<h1>aaaaaaaa</h1>')
 
 def home(request):
 	posts = Post.objects.filter(active=True, featured=True)[0:3]
-	posts = Project.objects.all()[0:3]
-	context = {'posts':posts}
+	current_user = request.user
+	try:
+		user_profile = Profile.objects.get(user=current_user)
+		skills = user_profile.skills.all()
+		total_skills = len(skills)
+		midpoint = total_skills // 2  +1 # Calculate the midpoint
+		skills_column1 = skills[:midpoint]  # First half of skills
+		skills_column2 = skills[midpoint:]  # Second half of skills
+	except Profile.DoesNotExist:
+		user_profile = None
+		skills_column1 = []
+		skills_column2 = []
+
+	context = {
+	'user_profile': user_profile,
+	'skills_column1': skills_column1,
+	'skills_column2': skills_column2,
+	}
+
+	return render(request, 'portfolio/index.html', context)
 	
-	return render(request, 'portfolio/index.html',context)
-	# return HttpResponse('<h1>aaaaaaaa</h1>')
 
 def posts(request):
 	posts = Post.objects.filter(active=True)
@@ -206,7 +239,10 @@ def sendEmail(request):
 
 @login_required(login_url="home")
 def userAccount(request):
-	profile = request.user.profile
+	try:
+		profile = Profile.objects.get(user=request.user)
+	except Profile.DoesNotExist:
+		profile = None
 
 	context = {'profile':profile}
 	return render(request, 'portfolio/account.html', context)
@@ -219,8 +255,12 @@ def profile(request):
 
 @login_required(login_url="home")
 def updateProfile(request):
-	user = request.user
-	profile = user.profile
+	user=request.user
+	try:
+		profile = Profile.objects.get(user=user)
+	except Profile.DoesNotExist:
+		profile = None
+	context = {'profile':profile}
 	form = ProfileForm(instance=profile)
 	if request.method == 'POST':
 		user_form = UserForm(request.POST, instance=user)

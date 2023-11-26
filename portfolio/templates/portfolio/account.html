@@ -23,10 +23,11 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="card card-body" id="user-info-box">
-				<img id="user_pic" src="{{profile.profile_pic.url}}">
+				{% comment %} <img id="user_pic" src="{{request.scheme}}://{{request.META.HTTP_HOST}}/static/images/{{profile.dp}}"> {% endcomment %}
+				<img id="user_pic" src="{{profile.dp.url}}">
 				<br>
 				<h2>{{profile}}</h2>
-				<p>Email: {{profile.email}}</p>
+				<p>Email: {{request.user.email}}</p>
 				<hr>
 				<p>{{profile.bio}}</p>
 				<hr>

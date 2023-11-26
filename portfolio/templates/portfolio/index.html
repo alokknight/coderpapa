@@ -29,7 +29,7 @@
 	<section class="s1">
 		<div class="main-container">
 			<div class="greeting-wrapper">
-				<h1>Hi, I'm Alok Patel</h1>
+				<h1>Hi, I'm {{request.user.first_name}} {{request.user.last_name}}</h1>
 			</div>
 
 
@@ -73,7 +73,7 @@
 			<div class="about-wrapper">
 				<div class="about-me">
 					<h4>More about me</h4>
-
+					<p>{{user_profile.bio}}<p>
 					<p>I build new projects just to tickle my brain and love teaching my fellows how they're made.</p>
 
 					<p>While I keep busy learning new skills, I love to meet new people in search of a great team & projects that interest me.</p>
@@ -88,7 +88,24 @@
 					</p>
 
 					<div id="skills">
-						<ul>
+							<ul>
+								{% for skill in skills_column1 %}
+									<li>{{skill}}</li>
+								{% endfor %}
+							</ul>
+							<ul>
+								{% for skill in skills_column2 %}
+									<li>{{skill}}</li>
+								{% endfor %}
+							</ul>
+						
+
+						{% comment %} <ul>
+							{% for skill in user_profile.skills.all  %}
+								<li>{{skill}}</li>
+							{% endfor %}
+						<ul> {% endcomment %}
+						{% comment %} <ul>
 							<li>Python</li>
 							<li>Django</li>
 							<li>Machine learning</li>
@@ -102,7 +119,7 @@
 							<li>AWS (sagmaker/S3/EC2)</li>
 							<li>Git/Github/Heroku</li>
 							<li>HTML/CSS/Bootstrap</li>
-						</ul>
+						</ul> {% endcomment %}
 
 					</div>
 
@@ -113,9 +130,9 @@
 					<img id="social_img" src="{% static 'images/alok.jpg' %}">
 					<h3>Find me on Twitter & Linkdein</h3>
 
-					<a target="_blank" href="https://www.linkedin.com/in/alokknight">Linkedin: @alokknight</a>
+					<a target="_blank" href="{{user_profile.linkedin}}}">Linkedin: @alokknight</a>
 					<br>
-					<a target="_blank" href="https://twitter.com/aalokknight">Twitter: @aalokknight</a>
+					<a target="_blank" href="{{user_profile.twitter}}">Twitter: @aalokknight</a>
 				</div>
 			</div>
 

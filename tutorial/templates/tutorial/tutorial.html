@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% block title %} TUTORIALS{% endblock title %}
+{% load static %}
+<!--{% static "img" as baseurl %}-->
+{% static "img"  as baseurl  %}
+{% block body %}
+
+<h1>{{ tutorial.title }}</h1>
+
+<div>
+  <img width="560" height="315" src="{{ tutorial.img.url }}" alt="{{ tutorial.title }} Image">
+</div>
+
+<iframe width="560" height="315" src="" title="YouTube video player"  allowfullscreen></iframe>
+<div>
+  <iframe width="560" height="315" src="{{ tutorial.sampleLink }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<p>{{ tutorial.desc|safe }}</p>
+
+<p>Price: ${{ tutorial.price }}</p>
+
+{% if tutorial.offer %}
+    <p>Offer Available: Yes</p>
+{% else %}
+    <p>Offer Available: No</p>
+{% endif %}
+
+<p>Sample Link: <a href="{{ tutorial.sampleLink }}" target="_blank">{{ tutorial.sampleLink }}</a></p>
+
+<h2>Skills Used:</h2>
+<ul>
+    {% for skill in tutorial.subject.all %}
+        <li>{{ skill.skillname }}</li>
+    {% endfor %}
+</ul>
+
+
+<div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img src="{{ tutorial.img.url }}" class="d-block w-100" alt=""width="200" height="200">
+                  <div class="card-body">
+                    <p class="card-text">{{tutorial.title}}</p>
+                    <p class="card-text">{{tutorial.desc | safe}} </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="{% url 'show_tut' slug=tutorial.slug %}">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        </a>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Buy</button>
+                      </div>
+                      <small class="text-muted">${{tutorial.price}}</small>
+                      {% if tut.offer %}
+                      <small class="text-muted">$50 offer </small>
+                      {% endif %}
+                      <small class="text-muted">{{tutorial.dis}}</small>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+</div>
+{% endblock body %}
+
+<!--
+https://source.unsplash.com/600x500/?nature,water
+https://source.unsplash.com/600x500/?tablet,rose
+https://source.unsplash.com/600x500/?lamp
+-->

@@ -5,6 +5,6 @@ from objectiveQues import views
 #from app1 import views
 urlpatterns = [
     path('',views.q, name='ques'),
-    # path('projects/',views.projects,name='projects'),
+    path('<str:subject>/',views.view_subject_questions,name='view_subject_questions')
 
 ]

@@ -12,11 +12,11 @@ ul{
 }
 
 
-* {
+{% comment %} * {
     margin: 0;
     padding: 2;
     box-sizing: border-box
-}
+} {% endcomment %}
 
 .container{
 
@@ -42,7 +42,7 @@ ul{
             <div class="card-body">
               <p class="card-text" >{{project.desc|safe}}</p>
             </div>
-{% endfor %} 
+{% endfor %}
 </div>
 
 
@@ -60,7 +60,11 @@ ul{
                                         <button type="button" onclick="window.location.href='{{project.deploylink}}'" class="btn btn-sm btn-outline-secondary">deploy</button>
                                         </p>
                                         {% comment %} <p class="card-text">{{project.desc|safe}}</p> {% endcomment %}
-                                        <p class="card-text"><b>Tech Used:</b> {{project.techused}}</p>
+                                        <p class="card-text"><b>Tech Used:</b>
+                                            {% for skill in project.techused.all %}
+                                                {{ skill.skillname }},
+                                            {% endfor %}
+                                        </p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
                                                     <button type="button" onclick="window.location.href='/projects/{{project.slug}}'"class="btn btn-sm btn-outline-secondary">View</button>
@@ -72,7 +76,7 @@ ul{
                                     </div>
                             </div>
                     </div>
-        {% endfor %}   
+        {% endfor %}
     </div>
 </div>
 {% endblock body %}

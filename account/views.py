@@ -61,23 +61,6 @@ def login_(request):
         return render(request,"account/login.html")
 
 
-
-# def loginUser(request):
-#     if request.method=="POST":
-#         username= request.POST.get("username")
-#         password=request.POST.get("password")
-#         #check if user have entered correct credentials
-#         user = User.auth(username= username, password=password)
-#         print(request.user)
-#         if User is not None:
-#             login(request,user)
-#             return redirect('user/login/')
-#         else:
-#             print("error ho gyi babu")
-#             #return render(request ,'login.html')
-#     else:
-#         return render(request ,'login.html')
-
 def logout_(request):
     logout(request)
     return redirect('/')

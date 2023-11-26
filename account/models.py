@@ -1,40 +1,31 @@
 from django.db import models
 from django.contrib.auth.models import User,auth
-# Create your models here.
 
+class Skill(models.Model):
+    skillname = models.CharField(max_length=50,default="")
+    def __str__(self):
+        return self.skillname
 
-# class Skill(models.Model):
-#     skill=models.CharField(max_length=50,default="")
-#     skill_link=models.CharField(max_length=150,default="")
-#     def __str__(self):
-#         return self.skill
-
-
-# class WorkLink(models.Model):
-
-#     work=models.CharField(default="", max_length=50)
-#     work_link=models.CharField(default="", max_length=150)
-#     def __str__(self):
-#         return self.work
-
-
-# class Profile(models.Model):
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
+    skills = models.ManyToManyField(Skill, blank=True)
+    dp = models.ImageField(upload_to="pics")
+    phone = models.BigIntegerField(null=True, default=None)
+    profession = models.CharField(max_length=50, null=True, default=None)
+    experience = models.CharField(max_length=50, null=True, default=None)
+    rate = models.IntegerField(null=True, default=None)
+    eng_level = models.CharField(max_length=10, null=True, default=None)
+    completedProjectNo = models.IntegerField(null=True, default=None)
+    availability = models.IntegerField(null=True, default=None)
+    bio = models.TextField(null=True, default=None)  # Changed to TextField for longer text
+    twitter = models.URLField(null=True, blank=True)
+    linkedin = models.URLField(null=True, blank=True)
+    github = models.URLField(null=True, blank=True)
+    def __str__(self):
+        return self.user.username
     
-#     skill=models.ForeignKey(Skill,on_delete=models.CASCADE)
-#     work_link=models.ForeignKey(WorkLink,on_delete=models.CASCADE)
-#     dp=models.ImageField(upload_to="pics", height_field=None, width_field=None, max_length=None)
-#     username=User.username
-#     name=str(User.first_name)+str(User.last_name)
-#     email=User.email
-#     phone=models.BigIntegerField(default="")
-#     profession=models.CharField(default="", max_length=50)
-#     experience=models.CharField(default="", max_length=50)
-#     rate=models.IntegerField(default="")
-#     eng_level=models.CharField(default="",max_length=10)
-#     completedProjectNo=models.IntegerField(default="")
-#     availability=models.IntegerField(default="")
-#     bio=models.IntegerField(default="")
-#     def __str__(self):
-#         return self.username
-
-
+    # def __str__(self):
+    #     name = str(self.user.first_name)
+    #     if self.user.last_name:
+    #         name += ' ' + str(self.user.last_name)
+    #     return name

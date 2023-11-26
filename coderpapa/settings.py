@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'wineshop',
     'objectiveQues',
+    'tutorial',
 
     'crispy_forms',
     'django_filters',

@@ -3,62 +3,42 @@
 
 {% block body %}
 
-{% for s in subjects%}
-{{s.subject}}
-{% endfor%}
 
-
-{% for q in quess %}
-    <div class="container mt-sm-5 my-1">
-        <div class="question ml-sm-5 pl-sm-5 pt-2">
-            <div class="py-2 h5"><b>Q.{{q.quesno}}{{ q.ques|safe }}</b></div>
+{% for entry in context %}
+    <h3>{{ entry.subject.subject }}</h3>
+        {% for q in entry.questions %}
+        <div class="container mt-sm-5 my-1">
+            <div class="question ml-sm-5 pl-sm-5 pt-2">
+                <p class="py-2 h5" style="white-space: nowrap;" ><b>Q.{{ q.quesno }}{{ q.ques|safe }}</b></p>
                 <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
                     <label class="options">{{ q.option1 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
                     <label class="options">{{ q.option2 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
                     <label class="options">{{ q.option3 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
                     <label class="options">{{ q.option4 }}<input type="radio" name="radio"> <span class="checkmark"></span> </label>
 
-                        <div onclick="myFunction()">
-
-                                <div class="mcq-answer-view-con">
-                                    <a  class="mcq-answer-view" ><i class="fa fa-unlock"  ></i> View Answer</a>
-                                </div>
-
-                                <div id ='myDIV' class="mcq-answer-con" style="display: none;">
-                                    <label>Correct Answer: <i class="fa fa-times mcq-ans-close"></i></label>
-                                    <div>
-                                            <label><i class="fa fa-check mcq-ans-tick"></i>{{ q.ans }}</label>
-                                            <div ><label class="options"><strong>Ans.</strong> {{ q.exp }}<span class=""></span> </label></div>
-                                    </div>
-                                </div>
+                    <div onclick="myFunction('answer{{ q.quesno }}')">
+                        <div class="mcq-answer-view-con">
+                            <a class="mcq-answer-view"><i class="fa fa-unlock"></i> View Answer</a>
                         </div>
 
-{% comment %}
-<!--
-                        <div >
-                                <div class="mcq-answer-view-con">
-                                    <a class="mcq-answer-view" ><i class="fa fa-unlock" aria-hidden="true"></i> View Answer</a>
+                        <div id="answer{{ q.quesno }}" class="mcq-answer-con" style="display: none;">
+                            <label>Correct Answer: <i class="fa fa-times mcq-ans-close"></i></label>
+                            <div>
+                                <label><i class="fa fa-check mcq-ans-tick"></i>{{ q.ans }}</label>
+                                <div>
+                                    <label class="options"><strong>Ans.</strong> {{ q.exp }}
+                                        <span class=""></span>
+                                    </label>
                                 </div>
-
-                                <div class="mcq-answer-con" hidden="" style="display: block;">
-                                    <label>Correct Answer: <i class="fa fa-times mcq-ans-close"></i></label>
-                                    <div>
-                                            <label><i class="fa fa-check mcq-ans-tick"></i>{{ q.ans }}</label>
-                                            <br>
-                                    </div>
-                                </div>
+                            </div>
                         </div>
--->
- {% endcomment %}
-
-
-
-
+                    </div>
                 </div>
             </div>
-
-    </div>
+        </div>
+        {% endfor %}
 {% endfor %}
+
 <div class="d-flex align-items-center pt-3">
             <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
             <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
@@ -204,13 +184,14 @@ body {
 
 <script>
 
-var x = document.getElementById("myDIV");
-function myFunction() {
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  }else {
-    x.style.display = "block";
-  }
-}
+function myFunction(answerId) {
+    console.log('JavaScript is loaded');
+    var x = document.getElementById(answerId);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+    }
 </script>
 {% endblock body %}

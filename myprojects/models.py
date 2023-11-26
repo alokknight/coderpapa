@@ -5,21 +5,28 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from datetime import timezone
 from django.contrib.auth.models import User
+from account.models import Skill
+
+class projectLink(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    projectLink = models.URLField(unique=True)
+    def __str__(self):
+        return str(self.link)
+    
 
 # Create your models here.
 class Project(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title=models.CharField( max_length=150,primary_key=True, default="")
     img=models.ImageField(upload_to="images", height_field=None, width_field=None, max_length=None)
     startingdate=models.DateField()
     endingdate=models.DateField()
-    techused=models.CharField( max_length=50)
-    githublink=models.CharField(max_length=200,default='#')
-    deploylink=models.CharField(max_length=300,default='#')
+    techused = models.ManyToManyField(Skill, blank=True)
+    githublink = models.URLField(unique=True)
+    deploylink = models.URLField(unique=True)
     # desc=models.TextField()
     desc=RichTextUploadingField()
-
     slug = models.SlugField(null=True, blank=True, default='www')
-
     def __str__(self):
         return self.title
 
@@ -34,22 +41,6 @@ class Project(models.Model):
                 has_slug = Project.objects.filter(slug=slug).exists()
             self.slug = slug
         super().save(*args, **kwargs)
- 
-
-# class Profile(models.Model):
-# 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-# 	first_name = models.CharField(max_length=200, blank=True, null=True)
-# 	last_name = models.CharField(max_length=200, blank=True, null=True)
-# 	email = models.CharField(max_length=200)
-# 	profile_pic = models.ImageField(null=True, blank=True, upload_to="images", default="/user.png")
-# 	bio = models.TextField(null=True, blank=True)
-# 	twitter = models.CharField(max_length=200,null=True, blank=True)
-
-# 	def __str__(self):
-# 		name = str(self.first_name)
-# 		if self.last_name:
-# 			name += ' ' + str(self.last_name)
-# 		return name
 
 # class Tag(models.Model):
 # 	name = models.CharField(max_length=200)

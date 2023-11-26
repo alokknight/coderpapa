@@ -18,12 +18,13 @@ def projects(request):
 
 def viewProject(request,slug):
     project=Project.objects.get(slug=slug)
+    related_skills = project.techused.all()
     # paginator = Paginator(projects, 2) # Show 2 Project per page.
 
     # page_number = request.GET.get('page')
     # page_obj = paginator.get_page(page_number)
 
-    return render(request, 'myprojects/project.html',{'project':project})#,'page_obj':page_obj})
+    return render(request, 'myprojects/project.html',{'project':project,'related_skills':related_skills})#,'page_obj':page_obj})
 
 
 

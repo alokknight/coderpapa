@@ -17,16 +17,3 @@ class ProjectForm(ModelForm):
 	class Meta:
 		model = Project
 		fields = '__all__'
-
-
-# class UserForm(ModelForm):
-# 	class Meta:
-# 		model = User
-# 		fields = ['first_name', 'last_name', 'email']
-		
-
-# class ProfileForm(ModelForm):
-# 	class Meta:
-# 		model = Profile
-# 		fields = '__all__'
-# 		exclude = ['user']

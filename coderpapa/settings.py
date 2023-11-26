@@ -37,7 +37,7 @@ SECRET_KEY = 'django-insecure-sbzl!)j9jd!60_w)ee3g!qg&yi^^#zpamc4beyzv=+9!jdr0jv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['alokpatel.herokuapp.com','127.0.0.1','localhost','coderpapa.org','coderpapa.herokuapp.com',]
+ALLOWED_HOSTS = ['web-production-b08d.up.railway.app','alokpatel.herokuapp.com','127.0.0.1','localhost','coderpapa.org','coderpapa.herokuapp.com',]
 
 
 # Application definition

@@ -83,7 +83,7 @@
 
 					<h4>TOP EXPERTISE</h4>
 
-					<p>Fullstack developer with primary focus on Django + Machine learning: 
+					<p>Fullstack developer with primary focus on Django + Machine learning:
 					<a target="_blank" href="{% static 'alokResume.pdf' %}">Download Resume</a>
 					</p>
 
@@ -98,7 +98,7 @@
 									<li>{{skill}}</li>
 								{% endfor %}
 							</ul>
-						
+
 
 						{% comment %} <ul>
 							{% for skill in user_profile.skills.all  %}
@@ -125,12 +125,12 @@
 
 				</div>
 
-				
+
 				<div class="social-links">
 					<img id="social_img" src="{% static 'images/alok.jpg' %}">
 					<h3>Find me on Twitter & Linkdein</h3>
 
-					<a target="_blank" href="{{user_profile.linkedin}}}">Linkedin: @alokknight</a>
+					<a target="_blank" href="{{user_profile.linkedin}}">Linkedin: @alokknight</a>
 					<br>
 					<a target="_blank" href="{{user_profile.twitter}}">Twitter: @aalokknight</a>
 				</div>
@@ -144,7 +144,7 @@
 			<h3 style="text-align: center;">Want to see some of my past projects</h3>
 
 			<div class="post-wrapper">
-			
+
 				{% for project in posts %}
 				<div>
 					<div class="post">
@@ -192,7 +192,7 @@
 				<input id="submit-btn" type="submit" value="Send">
 			</form>
 		</div>
-	</section> 
+	</section>
 
 	<script type="text/javascript">
 		let static = "{% static 'css' %}"

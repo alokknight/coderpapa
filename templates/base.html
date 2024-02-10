@@ -25,7 +25,46 @@ body {
 		</video>
 </section> {% endcomment %}
 {% comment %} <div style="background-image: url('{{request.scheme}}://{{request.META.HTTP_HOST}}{% static "img" %}/background1.jpg');"> {% endcomment %}
+  .svg-button {
+    display: inline-block;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #e74c3c;
+    border-radius: 5px;
+    color: #e74c3c;
+    position: relative;
+    overflow: hidden;
+  }
 
+  .svg-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e74c3c;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.3s ease-out;
+  }
+
+
+  .svg-button:hover::before {
+    transform: scaleX(1);
+    transform-origin: 100% 50%;
+  }
+  #user_pic_{
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		border:1px solid #888;
+		margin:0 auto;
+		object-fit: cover;
+	}
 </style>
 
 
@@ -74,7 +113,7 @@ body {
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/blogs/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          blogs
+          Blogs
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/blogs/">BLOGS</a></li>
@@ -83,6 +122,10 @@ body {
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Somthing else</a></li>
           </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -101,12 +144,9 @@ body {
           <a class="nav-link" href="/about/">About Me</a>
         </li> {% endcomment %}
         <li class="nav-item">
-          <a class="nav-link" href="/profile/">My Profile</a>
+          <a class="nav-link" href="/profile/account/">Dashboard</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/projects/">Projects</a>
-        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/contact/">Contact Us</a>
@@ -115,17 +155,40 @@ body {
 
 
       </ul>
-      <li><a href="#"><i class="fa fa-search fa-2x"></i></a></li>&nbsp &nbsp
 
+      <li>
+        <a href="#"><i class="fa fa-search fa-2x"></i></a>
+      </li>
 
-       {% if user.is_authenticated %}
-      <p style="color: white ;"> Welcome &nbsp <strong>{{ request.user}} &nbsp &nbsp </strong></p>
-      <button class="btn btn-outline-success" onclick="window.location.href='/account/logout/'" type="login">Logout</button>
+      <li>
+      {% if user.is_authenticated %}
+      <p style="color: white ;">
+        <strong>
+          <a class="nav-link text-capitalize" href="/profile/">{{ request.user}}</a>
+        </strong>
+      </p>
+      </li>
+
+      <li><img id="user_pic_" src="{{profile.dp.url}}"></li>
+      <li>
+      <a class="svg-button" onclick="window.location.href='/account/logout/'" type="login">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 2H4.33333C3.25333 2 2.33333 2.92 2.33333 4V20C2.33333 21.08 3.25333 22 4.33333 22H15" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 11V18" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 15H10.3333C10.1533 15 10 15.1533 10 15.3333V18.6667C10 18.8467 10.1533 19 10.3333 19H15" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 7H10.6" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 11H11" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Logout
+      </a>
+      </li>
 
       {% else %}
-
+      <li>
       <button class="btn btn-outline-success" onclick="window.location.href='/account/login/'" type="login">login</button>
       <button class="btn btn-outline-success" onclick="window.location.href='/account/register/'" type="login">Register</button>
+      </li>
       {% endif %}
 
 
